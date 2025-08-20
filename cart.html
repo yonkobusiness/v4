@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Votre Panier</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="cart.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -47,6 +45,42 @@
     .cart-item-price {
       color: #888;
       font-size: 14px;
+    }
+
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .quantity-btn {
+      background-color: #FFA500;
+      border: none;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .quantity-display {
+      font-size: 14px;
+    }
+
+    .remove-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .remove-btn:hover {
+      background-color: #c0392b;
     }
 
     .total {
@@ -107,18 +141,60 @@
   </div>
 
   <script>
-    const cart = getCart();
-    const list = document.getElementById('cart-list');
-    const totalContainer = document.getElementById('total-container');
-    const whatsappBtn = document.getElementById('whatsapp-link');
-    const clearCartBtn = document.getElementById('clear-cart');
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    function setCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function updateQuantity(productId, change) {
+      let cart = getCart();
+      const index = cart.findIndex(p => p.id === productId);
+      if (index !== -1) {
+        cart[index].qty += change;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        setCart(cart);
+        renderCart();
+      }
+    }
+
+    function removeItem(productId) {
+      let cart = getCart().filter(p => p.id !== productId);
+      setCart(cart);
+      renderCart();
+    }
+
+    function generateWhatsAppLink() {
+      const cart = getCart();
+      if (cart.length === 0) return '#';
+
+      let message = 'Commande :\n';
+      let total = 0;
+
+      cart.forEach(p => {
+        const lineTotal = p.price * p.qty;
+        message += `• ${p.name} × ${p.qty} = ${lineTotal} FCFA\n`;
+        total += lineTotal;
+      });
+
+      message += `\nTotal: ${total} FCFA`;
+      return `https://wa.me/225XXXXXXXX?text=${encodeURIComponent(message)}`;
+    }
 
     function renderCart() {
+      const list = document.getElementById('cart-list');
+      const totalContainer = document.getElementById('total-container');
+      const whatsappBtn = document.getElementById('whatsapp-link');
+      const clearCartBtn = document.getElementById('clear-cart');
+      const cart = getCart();
+
       list.innerHTML = '';
       totalContainer.textContent = '';
-      const updatedCart = getCart();
-
-      if (updatedCart.length === 0) {
+      if (cart.length === 0) {
         list.innerHTML = '<p class="empty-message">Le panier est vide.</p>';
         whatsappBtn.style.display = 'none';
         clearCartBtn.style.display = 'none';
@@ -126,18 +202,25 @@
       }
 
       let total = 0;
-      updatedCart.forEach(p => {
+      cart.forEach(p => {
         const div = document.createElement('div');
         div.className = 'cart-item';
+        const lineTotal = p.price * p.qty;
         div.innerHTML = `
           <img src="${p.imageUrl}" alt="${p.name}" />
           <div class="cart-item-details">
             <div class="cart-item-name">${p.name}</div>
-            <div class="cart-item-price">${p.price} FCFA</div>
+            <div class="cart-item-price">${p.price} FCFA × ${p.qty} = ${lineTotal} FCFA</div>
+            <div class="cart-controls">
+              <button class="quantity-btn" onclick="updateQuantity('${p.id}', -1)">-</button>
+              <span class="quantity-display">${p.qty}</span>
+              <button class="quantity-btn" onclick="updateQuantity('${p.id}', 1)">+</button>
+            </div>
           </div>
+          <button class="remove-btn" onclick="removeItem('${p.id}')">Supprimer</button>
         `;
         list.appendChild(div);
-        total += p.price;
+        total += lineTotal;
       });
 
       totalContainer.textContent = `Total : ${total} FCFA`;
@@ -146,7 +229,7 @@
       clearCartBtn.style.display = 'inline-block';
     }
 
-    clearCartBtn.addEventListener('click', () => {
+    document.getElementById('clear-cart').addEventListener('click', () => {
       localStorage.removeItem('cart');
       renderCart();
     });
