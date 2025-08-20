@@ -1,0 +1,170 @@
+[
+  {
+    "id": "montre1",
+    "name": "Kebino Classique Vert Dorée",
+    "description": "Une montre élégante avec un boîtier en métal doré et un bracelet en cuir vert, parfaite pour un style raffiné et original.",
+    "price": 6000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755596041/watchGray-nobg_kspisc.png",
+    "category": "Montres"
+  },
+  {
+    "id": "parfum1",
+    "name": "Narcos",
+    "description": "Un parfum captivant et intense pour une présence inoubliable.",
+    "price": 1000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755544979/narcos_lze169.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum2",
+    "name": "Ecstatic Addition",
+    "description": "Une fragrance vibrante et énergique pour les esprits libres.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755544976/ecstaticParfums_bmljxv.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "montre2",
+    "name": "Kebino Classique Marron Beige",
+    "description": "Un classique moderne, cette montre allie un boîtier en métal doré et un bracelet en cuir brun pour un look élégant et polyvalent.",
+    "price": 6000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755555709/watchBrown-removebg-preview_dyzeso.png",
+    "category": "Montres"
+  },
+  {
+    "id": "parfum3",
+    "name": "Astro Gold",
+    "description": "Un parfum doré, éclatant et sophistiqué pour toutes les occasions.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592992/astroGold_bbwvuj.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum4",
+    "name": "Miss Daisy",
+    "description": "Un parfum floral et doux, parfait pour une touche féminine.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592993/daisy_mvltkr.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum5",
+    "name": "Voyager",
+    "description": "Un parfum d’aventure et de découverte, pour les explorateurs.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593062/voyager_rwott5.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum6",
+    "name": "Speed",
+    "description": "Une senteur dynamique et moderne pour les esprits rapides.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593059/speed_wv5kmo.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum7",
+    "name": "Hey",
+    "description": "Un parfum frais et audacieux pour une personnalité affirmée.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592992/dorallHey_ef6pvo.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum8",
+    "name": "Sara Qael",
+    "description": "Une fragrance élégante et mystérieuse.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593059/saraQael_qwxa6p.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum9",
+    "name": "Night Club",
+    "description": "Un parfum vibrant pour des nuits inoubliables.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593058/nightClub_nquqpy.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum10",
+    "name": "Islanders",
+    "description": "Une senteur exotique qui invite au voyage.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592994/islanders_b4snj3.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum11",
+    "name": "Lancy",
+    "description": "Un parfum raffiné et délicat.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593054/lancy_to3cje.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum12",
+    "name": "212 VIP MEN",
+    "description": "Un parfum moderne et sophistiqué pour homme.",
+    "price": 1000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592992/212vipmen_mtic6b.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum13",
+    "name": "Mastermind",
+    "description": "Une fragrance puissante pour les leaders.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593055/mastermindPourHomme_i87w8l.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum14",
+    "name": "Royal Warriors",
+    "description": "Un parfum noble et audacieux.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592994/dorallRoyalWarriors_teqyra.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum15",
+    "name": "Gold Secret",
+    "description": "Un parfum mystérieux et précieux.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592993/dorallGoldSecret_fqgvul.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum16",
+    "name": "Beau Monde",
+    "description": "Une fragrance élégante pour un monde raffiné.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755544979/beauMonde_ypt3cb.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum17",
+    "name": "Humble",
+    "description": "Un parfum discret et raffiné.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592994/humbleHomme_qpioxe.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum18",
+    "name": "Le Homme Noir",
+    "description": "Une senteur profonde et masculine.",
+    "price": 1500,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755593055/leHommeNoir_gb6nsh.jpg",
+    "category": "Parfums"
+  },
+  {
+    "id": "parfum19",
+    "name": "Rose Of Love",
+    "description": "Un parfum floral et romantique.",
+    "price": 2000,
+    "imageUrl": "https://res.cloudinary.com/dqfqbzmfd/image/upload/v1755592993/dorallRoseOfLove_gjysy9.jpg",
+    "category": "Parfums"
+  }
+]
