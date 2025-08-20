@@ -1,33 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <title>Votre Panier</title>
   <link rel="stylesheet" href="style.css" />
   <script src="cart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #FFF8E1;
+      color: #333;
+      margin: 20px;
+    }
+
+    h2 {
+      color: #FF9800;
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: auto;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .cart-item-price {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #whatsapp-link {
+      display: block;
+      width: fit-content;
+      margin: 30px auto;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    #whatsapp-link:hover {
+      background-color: #1ebc5b;
+    }
+
+    .empty-message {
+      text-align: center;
+      color: #777;
+      font-style: italic;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Panier</h2>
+  <h2>Votre Panier</h2>
   <div id="cart-list"></div>
+  <div class="total" id="total-container"></div>
   <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
 
   <script>
     const cart = getCart();
     const list = document.getElementById('cart-list');
+    const totalContainer = document.getElementById('total-container');
+
     if (cart.length === 0) {
-      list.innerHTML = "<p>Le panier est vide.</p>";
+      list.innerHTML = '<p class="empty-message">Le panier est vide.</p>';
+      document.getElementById('whatsapp-link').style.display = 'none';
     } else {
       let total = 0;
       cart.forEach(p => {
         const div = document.createElement('div');
-        div.innerHTML = `<p><img src="${p.imageUrl}" width="50"> ${p.name} - ${p.price} FCFA</p>`;
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${p.imageUrl}" alt="${p.name}" />
+          <div class="cart-item-details">
+            <div class="cart-item-name">${p.name}</div>
+            <div class="cart-item-price">${p.price} FCFA</div>
+          </div>
+        `;
         list.appendChild(div);
         total += p.price;
       });
-      list.innerHTML += `<p><strong>Total: ${total} FCFA</strong></p>`;
+      totalContainer.innerHTML = `Total : ${total} FCFA`;
+      document.getElementById('whatsapp-link').href = generateWhatsAppLink();
     }
-
-    document.getElementById('whatsapp-link').href = generateWhatsAppLink();
   </script>
 </body>
 </html>
