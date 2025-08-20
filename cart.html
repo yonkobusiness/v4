@@ -8,14 +8,16 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #FFF8E1;
+      background-color: #ffffff;
       color: #333;
       margin: 20px;
+      padding: 0;
     }
 
     h2 {
       color: #FF9800;
       text-align: center;
+      margin-bottom: 30px;
     }
 
     .cart-item {
@@ -54,20 +56,35 @@
       margin-top: 20px;
     }
 
-    #whatsapp-link {
-      display: block;
-      width: fit-content;
-      margin: 30px auto;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
+    #buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
     }
 
-    #whatsapp-link:hover {
+    .btn {
+      background-color: #FFA500;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e68a00;
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+    }
+
+    .btn-whatsapp:hover {
       background-color: #1ebc5b;
     }
 
@@ -83,19 +100,33 @@
   <h2>Votre Panier</h2>
   <div id="cart-list"></div>
   <div class="total" id="total-container"></div>
-  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
+
+  <div id="buttons">
+    <a id="whatsapp-link" class="btn btn-whatsapp" href="#" target="_blank">Commander via WhatsApp</a>
+    <button id="clear-cart" class="btn">Vider le panier</button>
+  </div>
 
   <script>
     const cart = getCart();
     const list = document.getElementById('cart-list');
     const totalContainer = document.getElementById('total-container');
+    const whatsappBtn = document.getElementById('whatsapp-link');
+    const clearCartBtn = document.getElementById('clear-cart');
 
-    if (cart.length === 0) {
-      list.innerHTML = '<p class="empty-message">Le panier est vide.</p>';
-      document.getElementById('whatsapp-link').style.display = 'none';
-    } else {
+    function renderCart() {
+      list.innerHTML = '';
+      totalContainer.textContent = '';
+      const updatedCart = getCart();
+
+      if (updatedCart.length === 0) {
+        list.innerHTML = '<p class="empty-message">Le panier est vide.</p>';
+        whatsappBtn.style.display = 'none';
+        clearCartBtn.style.display = 'none';
+        return;
+      }
+
       let total = 0;
-      cart.forEach(p => {
+      updatedCart.forEach(p => {
         const div = document.createElement('div');
         div.className = 'cart-item';
         div.innerHTML = `
@@ -108,9 +139,19 @@
         list.appendChild(div);
         total += p.price;
       });
-      totalContainer.innerHTML = `Total : ${total} FCFA`;
-      document.getElementById('whatsapp-link').href = generateWhatsAppLink();
+
+      totalContainer.textContent = `Total : ${total} FCFA`;
+      whatsappBtn.href = generateWhatsAppLink();
+      whatsappBtn.style.display = 'inline-block';
+      clearCartBtn.style.display = 'inline-block';
     }
+
+    clearCartBtn.addEventListener('click', () => {
+      localStorage.removeItem('cart');
+      renderCart();
+    });
+
+    renderCart();
   </script>
 </body>
 </html>
