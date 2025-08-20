@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Votre Panier</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="cart.js"></script>
+</head>
+<body>
+  <h2>Panier</h2>
+  <div id="cart-list"></div>
+  <a id="whatsapp-link" href="#" target="_blank">Commander via WhatsApp</a>
+
+  <script>
+    const cart = getCart();
+    const list = document.getElementById('cart-list');
+    if (cart.length === 0) {
+      list.innerHTML = "<p>Le panier est vide.</p>";
+    } else {
+      let total = 0;
+      cart.forEach(p => {
+        const div = document.createElement('div');
+        div.innerHTML = `<p><img src="${p.imageUrl}" width="50"> ${p.name} - ${p.price} FCFA</p>`;
+        list.appendChild(div);
+        total += p.price;
+      });
+      list.innerHTML += `<p><strong>Total: ${total} FCFA</strong></p>`;
+    }
+
+    document.getElementById('whatsapp-link').href = generateWhatsAppLink();
+  </script>
+</body>
+</html>
